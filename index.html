@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>MY_Tic-Tac-toe.com</li>
+        </ul>
+    </nav>
+    <!-- Select the player section -->
+    <div class="select-box">
+        <header>Tic Tac Toe</header>
+        <div class="content">
+            <div class="title">Select the your Player ?</div>
+            <div class="option">
+                <button class="playerX">Player (X)</button>
+                <button class="playerO">Player (O)</button>
+            </div>
+        </div>
+    </div>
+    <!-- Game secion -->
+    <div class="game-container">
+        <div class="game-box">
+            <div class="players">
+                <span class="turnX active">X's Turn</span>
+                <span class="turnO">O's Trun</span>
+                <div class="slider"></div>
+            </div>
+            <div class="container">
+                <div class="box bt-0 bl-0"><span class="boxText"></span></div>
+                <div class="box bt-0"><span class="boxText"></span></div>
+                <div class="box bt-0 br-0"><span class="boxText"></span></div>
+                <div class="box bl-0"><span class="boxText"></span></div>
+                <div class="box"><span class="boxText"></span></div>
+                <div class="box br-0"><span class="boxText"></span></div>
+                <div class="box bb-0 bl-0"><span class="boxText"></span></div>
+                <div class="box bb-0"><span class="boxText"></span></div>
+                <div class="box bb-0 br-0"><span class="boxText"></span></div>
+            </div>
+        </div>
+        <div class="game-info">
+            <div class="heading">
+                <h1>Welcome to TIC-TAC-TOE</h1>
+            </div>
+            <div class="imageBox">
+                <img class="gif" src="cheer-up-cheer.gif" alt="cheer"/>
+                <img class="gif" src="giphy.gif" alt="cross" />
+            </div>
+            <div class="result-box-container">
+                <div class="result">
+                    <span>Win !</span> 
+                    <span>Loose !</span>
+                    <span> Draw Match</span>
+                </div>
+                <button id="reset">Replay</button>
+            </div>
+            
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
