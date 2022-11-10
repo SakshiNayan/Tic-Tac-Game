@@ -1,21 +1,32 @@
 console.log('My Tic-tac')
-
+//Selecting starting page
 const selectBox = document.querySelector('.select-box'),
-selectX_b = document.querySelector('.playerX'),
-selectO_b = document.querySelector('.playerO'),
-gameZone = document.querySelector('.game-container');
+choose = document.querySelectorAll(".choose")
 
-window.onload =()=>{
-    selectX_b.onclick =()=>{
-        selectBox.classList.add("hide");
-       // gameZone.classList.add("show") ;//hide the select box on player click
-    }
-    selectO_b.onclick =()=>{
-    
-        selectBox.classList.add("hide");
-        //gameZone.classList.add("show") ;
-    }
-}
+//selecting game page
+const gameZone = document.querySelector("#game-container"),
+showChange = document.querySelector(".slider")
+
+//how can we change turn
+let changeTurn =null
+
+choose.forEach(choosePlayer =>{
+    choosePlayer.addEventListener('click', ()=>{
+        if(choosePlayer.id === 'playerX'){
+            changeTurn = false;
+            console.log(changeTurn)
+            showChange.style.left =`160px`;
+        }else{
+            changeTurn = true;
+            console.log(changeTurn)
+            showChange.style.left =`160px`;
+        }
+        selectBox.style.display ="none";
+        gameZone.style.display ="block";
+        // selectBox.classList.add("hide");
+        // gameZone.classList.add("show")
+    })
+})
 
 
 
