@@ -1,183 +1,228 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-body{
-    background-image: linear-gradient(to right,rgb(252, 197, 206) ,rgb(202, 241, 248));
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-nav{
-    color: aliceblue;
-    background-color: rgb(126, 34, 145);
-    font-family: 'Roboto', sans-serif;
-    height: 30px;
+/* body{
+  background-image: linear-gradient(to right,rgb(252, 197, 206) ,rgb(202, 241, 248));
+} */
+::selection{
+  color: #fff;
+  background:#56baed;
 }
-
-nav ul{
-    list-style-type: none;
+body{
+  background:rgb(252, 197, 206)
 }
-/* ------------------------------------------------------------------------------------------------------------- */
+.select-box, .play-board, .result-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
 .select-box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #fff;
-    border-radius: 5px;
-    padding: 20px 60px 25px 30px;
-    max-width: 330px;
-    width: 100%;
-    /* display: none; */
-    transition: all 0.3 ease;
+  background: #fff;
+  padding: 20px 25px 25px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
 }
 .select-box.hide{
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%,-50%) scale(0.9);
+  opacity: 0;
+  pointer-events: none;
 }
 .select-box header{
-    font-size: 2vw;
-    font-weight: bolder;
-    padding-bottom: 10px;
-    border-bottom: 1px solid gray;
+  font-size: 30px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 1px solid lightgrey;
 }
 .select-box .title{
-    font-weight: 800;
-    margin: 20px 0;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 20px 0;
 }
-.option button{
-    border-radius: 4px;
-    width: 46%;    
-    background-color:#56baed;
-    color: #fff;
-    font-weight: bolder;
-    height: 30px;
-    font-size: 1.2vw;
-    border: 1px solid gray;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.select-box .options{
+  display: flex;
+  width: 100%;
 }
-button:hover{
-    color: #fff;
-    background-color: rgb(58, 82, 163);
-    transform: scale(0.96);
+.options button{
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 0;
+  border: none;
+  background: #56baed;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-/* ------------------------------------------------------------------------------------------------------------- */
+.options button:hover,
+.btn button:hover{
+  background-color: rgb(30, 96, 172);
+  transform: scale(0.96);
+}
+.options button.playerX{
+  margin-right: 5px;
+}
+.options button.playerO{
+  margin-left: 5px;
+}
+.select-box .credit{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.select-box .credit a{
+  color: #56baed;
+  text-decoration: none;
+}
+.select-box .credit a:hover{
+  text-decoration: underline;
+}
 
-#game-container{
-   justify-content: center;
-   /* display: flex; */
-   transition: all 0.3 ease;
-   display: none;
-   /* visibility:visible ; */
+.play-board{
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: rgb(85, 39, 17);
+  padding:20px 60px;
+  border-radius: 5px;
 }
-.container{
-    
-    display: grid;
-    grid-template-columns: repeat(3, 9vw);
-    grid-template-rows: repeat(3,9vw);
-   
-    margin-top: 50px;
+.play-board.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
-.gif{
-    width: 200px;
+.play-board .details{
+  padding: 7px;
+  border-radius: 5px;
+  background: #fff;
 }
-.box{
-    border: 2px solid black;
-    font-size: 3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bolder;
+.play-board .players{
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
 }
-.box:hover{
-    background-color: rgb(240, 233, 247);
+.players span{
+  position: relative;
+  z-index: 2;
+  color: #56baed;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+  transition: all 0.3 ease;
 }
-/* .imageBox{
-    display: none;
-} */
-.bl-0{
-    border-left: 0;
+.players.active span:first-child{
+  color: #fff;
 }
-.bt-0{
-    border-top: 0;
-}
-.bb-0{
-    border-bottom: 0;
-}
-.br-0{
-    border-right: 0;
-}
-.game-box{
-    width: 40%;
-    margin-left: 100px;
-}
-.players{
-    display: flex;
-    width: 60%;
-    justify-content: space-between;
-    margin-top: 30px;
-    background-color: #fff;
-    border-radius: 4px;
-}
-.game-box .players span{
-    color: #56baed;
-    border-radius: 5px;
-    width: 30%;
-    margin: 5px 10px ;
-    text-align: center;
-    cursor: default;
-    position: relative;
-    z-index: 5;
-    font-weight: 500;
-    height: 30px;
+.players.active span:last-child{
+  color: #56baed;
 }
 .players span:first-child{
-    color: #fff;
-    
+  color: #fff;
 }
-.game-box .players .slider{
-    position:absolute;
-    background: #56baed;
-    border-radius: 5px;
-    z-index: 2;
-    width: 14%;
-    height: 5%;
-    margin: 4px;
-    left:0;
-    /* left: 100px; */
+.players .slider{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #56baed;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
-.result-box-container{
-    margin-top: 40px;
+.players.active .slider{
+  left: 50%;
 }
-#reset{
-    border-radius: 4px;
-    width: 46%;    
-    background-color:#56baed;
-    font-size: 1.2vw;
-    border: 1px solid gray;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 5px;
-    font-weight: 600;
-    margin-top: 40px;
+.players.active span:first-child{
+  color: #56baed;
 }
-/* .game-container{
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%,-50%) scale(0.9);
-} 
-.game-container.show{
-    opacity: 1;
-    pointer-events:auto;
-    transform: translate(-50%,-50%) scale(2);
-} */
-.game-info{
-    float: right;
-    margin-right: 200px;
-    margin-top: -450px;
+.players.active span:nth-child(2){
+  color: #fff;
+}
+.players.active .slider{
+  left: 50%;
+}
+.play-area{
+  margin-top: 20px;
+}
+.play-area section{
+  display: flex;
+  margin-bottom: 1px;
+}
+.play-area section span{
+  display: block;
+  height: 90px;
+  width: 90px;
+  margin: 2px;
+  color: #56baed;
+  font-size: 40px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.result-box{
+  padding: 25px 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  opacity: 0;
+  text-align: center;
+  background: #fff;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.result-box.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.result-box .won-text{
+  font-size: 30px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+.result-box .won-text p{
+  font-weight: 600;
+  margin: 0 5px;
+}
+.output{
+   display: flex;
+  justify-content: center;
+}
+.result-box .btn{
+  width: 100%;
+  margin-top: 25px;
+ 
+}
+.btn button{
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border: none;
+  background: #56baed;
+  border-radius: 5px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.gif{
+  width: 0px;
+  margin-top: 20px;
+ 
 }
